@@ -1,0 +1,1 @@
+This project contains the code I use in my lecture on how to scale node apps without using cloud services.

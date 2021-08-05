@@ -1,0 +1,28 @@
+{
+  "name": "scaling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "blocking": "node 1/blocking.js",
+    "single": "node 2/single.js",
+    "cluster": "node 2/cluster.js",
+    "single:test": "npx autocannon -c 200 -d 10 http://localhost:5000/single",
+    "cluster:test": "npx autocannon -c 200 -d 10 http://localhost:5000/cluster",
+    "fragile": "node 3/fragile.js",
+    "resilient": "node 3/resilient.js",
+    "changes": "node 4/changes.js",
+    "kill": "kill -SIGUSR2 {pid}",
+    "proxy": "forever start 5/proxy.js 8081 && forever start 5/proxy.js 8082 && forever start 5/proxy.js 8083 && forever start 5/proxy.js 8084",
+    "proxy:nginx": "nginx -c ${PWD}/5/nginx.conf",
+    "cpucheck": "sysctl hw.physicalcpu hw.logicalcpu"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
